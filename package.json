@@ -1,18 +1,30 @@
 {
-	"name": "SeattleJSApp",
+	"name": "seattle-js-app",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
+		"lint": "./node_modules/.bin/eslint --ext .js,.jsx index.ios.js src",
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest"
 	},
 	"dependencies": {
+		"faker": "^4.1.0",
 		"react": "16.0.0-alpha.12",
-		"react-native": "0.46.4"
+		"react-native": "0.46.4",
+		"react-navigation": "^1.0.0-beta.11",
+		"shortid": "^2.2.8",
+		"styled-components": "^2.1.1"
 	},
 	"devDependencies": {
+		"babel-eslint": "^7.2.3",
 		"babel-jest": "20.0.3",
 		"babel-preset-react-native": "2.1.0",
+		"eslint": "^4.3.0",
+		"eslint-config-formidable": "^3.0.0",
+		"eslint-plugin-babel": "^4.1.2",
+		"eslint-plugin-filenames": "^1.2.0",
+		"eslint-plugin-import": "^2.7.0",
+		"eslint-plugin-react": "^7.1.0",
 		"jest": "20.0.4",
 		"react-test-renderer": "16.0.0-alpha.12"
 	},

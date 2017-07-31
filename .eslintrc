@@ -1,0 +1,26 @@
+---
+"extends":
+  - "formidable/configurations/es6-react"
+
+"rules":
+  "max-len": 0
+  "no-magic-numbers": 0
+  "semi": 0
+  "react/prop-types": 0
+  "react/jsx-handler-names": 0
+  "arrow-parens": 0
+  "react/no-multi-comp": 0
+  "no-invalid-this": 0
+  "new-cap": 0
+
+"env":
+  "browser": true,
+  "node": true
+
+"globals":
+  "afterEach": true,
+  "describe": true,
+  "expect": true,
+  "it": true,
+  "jest": true,
+  "test": true
