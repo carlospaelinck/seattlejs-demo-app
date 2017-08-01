@@ -3,7 +3,7 @@
 //  SeattleJSApp
 //
 //  Created by Carlos Paelinck on 7/29/17.
-//  Copyright © 2017 Facebook. All rights reserved.
+//  Copyright © 2017 Formidable. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

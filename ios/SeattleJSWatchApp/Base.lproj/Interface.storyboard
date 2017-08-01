@@ -9,17 +9,36 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Products-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SeattleJSWatchApp" customModuleProvider="target">
+                <controller title="Products" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SeattleJSWatchApp" customModuleProvider="target">
                     <items>
-                        <button width="1" alignment="left" title="SEND!" id="Ya8-fj-tXZ">
-                            <connections>
-                                <action selector="buttonWasSelected" destination="AgC-eL-Hgc" id="TJh-q9-ugK"/>
-                            </connections>
-                        </button>
+                        <table alignment="left" id="YJl-JY-48n">
+                            <items>
+                                <tableRow identifier="productRowType" id="O6d-na-2Yn" customClass="ProductRowType" customModule="SeattleJSWatchApp_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" animationDuration="1" layout="vertical" spacing="0.0" id="RXB-37-fzW">
+                                        <items>
+                                            <label width="1" alignment="left" text="Label" id="6cL-pg-4bm">
+                                                <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                            </label>
+                                            <label width="1" alignment="left" text="Label" id="832-Le-fxZ">
+                                                <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                            </label>
+                                        </items>
+                                        <edgeInsets key="margins" left="8" right="8" top="5" bottom="5"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="nameLabel" destination="6cL-pg-4bm" id="cZT-u7-Uve"/>
+                                        <outlet property="priceLabel" destination="832-Le-fxZ" id="ov5-7K-yan"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
+                    <connections>
+                        <outlet property="table" destination="YJl-JY-48n" id="9pQ-yF-1rm"/>
+                    </connections>
                 </controller>
             </objects>
         </scene>

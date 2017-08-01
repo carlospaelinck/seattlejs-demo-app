@@ -22,6 +22,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		292756AE1F2FE6E300714CB8 /* ProductRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292756AD1F2FE6E300714CB8 /* ProductRowType.swift */; };
 		2931A9971F2D3004009B6401 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2931A9951F2D3004009B6401 /* Interface.storyboard */; };
 		2931A9991F2D3004009B6401 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2931A9981F2D3004009B6401 /* Assets.xcassets */; };
 		2931A9A01F2D3004009B6401 /* SeattleJSWatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2931A99F1F2D3004009B6401 /* SeattleJSWatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -306,6 +307,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SeattleJSApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SeattleJSApp/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		292756AD1F2FE6E300714CB8 /* ProductRowType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductRowType.swift; sourceTree = "<group>"; };
 		2931A9931F2D3004009B6401 /* SeattleJSWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeattleJSWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2931A9961F2D3004009B6401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		2931A9981F2D3004009B6401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -474,6 +476,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2927568F1F2FE6C100714CB8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				292756AD1F2FE6E300714CB8 /* ProductRowType.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		2931A9941F2D3004009B6401 /* SeattleJSWatchApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -488,6 +498,7 @@
 		2931A9A31F2D3004009B6401 /* SeattleJSWatchApp Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2927568F1F2FE6C100714CB8 /* Views */,
 				2931A9DB1F2D316C009B6401 /* SeattleJSWatchApp Extension.entitlements */,
 				2931A9A41F2D3004009B6401 /* InterfaceController.swift */,
 				2931A9A61F2D3004009B6401 /* ExtensionDelegate.swift */,
@@ -1047,6 +1058,7 @@
 			files = (
 				2931A9A71F2D3004009B6401 /* ExtensionDelegate.swift in Sources */,
 				2931A9A51F2D3004009B6401 /* InterfaceController.swift in Sources */,
+				292756AE1F2FE6E300714CB8 /* ProductRowType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
