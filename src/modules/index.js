@@ -1,37 +1,35 @@
-import shortid from "shortid"
-import { commerce, company, lorem } from "faker"
-
-/* Data Generators */
-const generateProduct = () => ({
-  id: shortid(),
-  name: commerce.productName(),
-  price: commerce.price(),
-  details: {
-    company: company.companyName(),
-    color: commerce.color(),
-    description: lorem.paragraph()
-  }
-})
-
-const iterator = Array(25).keys()
-const generateData = () => [...iterator].map(() => generateProduct())
+import { baseData, moreDogs } from "./base-data"
 
 /* Types */
-export const GET_PRODUCT_DATA = "GET_PRODUCT_DATA"
+export const GET_DOGGOS = "GET_DOGGOS"
+export const LOAD_MORE_DOGS = "LOAD_MORE_DOGS"
 
 /* Actions */
-export const getProductData = () => dispatch => dispatch({
-  type: GET_PRODUCT_DATA,
-  payload: generateData()
+export const getDoggos = () => dispatch => dispatch({
+  type: GET_DOGGOS,
+  payload: baseData
+})
+
+export const loadMoreDogs = () => dispatch => dispatch({
+  type: LOAD_MORE_DOGS,
+  payload: moreDogs
 })
 
 /* App Reducer */
-export const reducer = (state = { data: [] }, action) => {
-  if (action.type === GET_PRODUCT_DATA) {
-    return { ...state, data: action.payload }
+export const reducer = (state = { doggos: [] }, action) => {
+  if (action.type === GET_DOGGOS) {
+    return { ...state, doggos: action.payload }
+  } else if (action.type === LOAD_MORE_DOGS) {
+    return {
+      ...state,
+      doggos: [
+        ...state.doggos,
+        ...action.payload
+      ]
+    }
   }
   return state
 }
 
 /* Selectors */
-export const productsSelector = state => state.data
+export const doggosSelector = state => state.doggos

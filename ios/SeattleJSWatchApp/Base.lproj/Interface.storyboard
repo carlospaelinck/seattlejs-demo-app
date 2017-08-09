@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13156.6" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13040"/>
     </dependencies>
     <scenes>
-        <!--Products-->
+        <!--Doggos-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller title="Products" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SeattleJSWatchApp" customModuleProvider="target">
+                <controller title="Doggos" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SeattleJSWatchApp" customModuleProvider="target">
                     <items>
                         <table alignment="left" id="YJl-JY-48n">
                             <items>
-                                <tableRow identifier="productRowType" id="O6d-na-2Yn" customClass="ProductRowType" customModule="SeattleJSWatchApp_Extension">
+                                <tableRow identifier="doggoRowType" id="O6d-na-2Yn" userLabel="doggoRowType" customClass="DoggoRowType" customModule="SeattleJSWatchApp_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" animationDuration="1" layout="vertical" spacing="0.0" id="RXB-37-fzW">
                                         <items>
                                             <label width="1" alignment="left" text="Label" id="6cL-pg-4bm">
                                                 <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
                                             </label>
-                                            <label width="1" alignment="left" text="Label" id="832-Le-fxZ">
+                                            <label width="1" alignment="left" text="Label" id="832-Le-fxZ" userLabel="Breed Label">
                                                 <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
                                             </label>
                                         </items>
                                         <edgeInsets key="margins" left="8" right="8" top="5" bottom="5"/>
                                     </group>
                                     <connections>
-                                        <outlet property="nameLabel" destination="6cL-pg-4bm" id="cZT-u7-Uve"/>
-                                        <outlet property="priceLabel" destination="832-Le-fxZ" id="ov5-7K-yan"/>
+                                        <outlet property="breedLabel" destination="832-Le-fxZ" id="mQ7-YC-npc"/>
+                                        <outlet property="nameLabel" destination="6cL-pg-4bm" id="Z6C-Ol-CdV"/>
                                     </connections>
                                 </tableRow>
                             </items>

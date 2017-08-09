@@ -1,39 +1,75 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { productsSelector } from "../../modules"
-import {
-  Text
-} from "react-native"
+import { doggosSelector } from "../../modules"
+import { Images } from "../../modules/base-data"
 import { FullView } from "../styled"
+import styled from "styled-components/native"
+
+const HeroImage = styled.Image`
+  background: green;
+  width: 100%;
+  height: 250px;
+`
+
+const ContentView = styled.View`
+  display: flex;
+  padding: 15px;
+  align-items: flex-start;
+  justify-content: flex-start;
+`
+
+const Header = styled.Text`
+  font-weight: 800;
+  font-size: 30px;
+`
+
+const Breed = styled.Text`
+  font-weight: 600;
+  font-size: 22px;
+  margin-bottom: 10px;
+`
+
+const Description = styled.Text`
+  font-size: 15px;
+  line-height: 22px;
+`
 
 class DetailView extends Component {
   static navigationOptions = {
-    title: "Product Detail"
+    title: "Doggo!"
   }
 
   constructor(props) {
     super(props)
     const {
       navigation: { state: { params: { id } } },
-      products
+      doggos
     } = props
     this.state = {
-      product: products.find(product => product.id === id)
+      doggo: doggos.find(doggo => doggo.id === id)
     }
   }
 
+
   render() {
-    const { product } = this.state
+    const { doggo } = this.state
     return (
       <FullView>
-        <Text>{ product.name }</Text>
+        <HeroImage
+          source={Images[doggo.picture]}
+        />
+        <ContentView>
+          <Header>{ doggo.name }</Header>
+          <Breed>{ doggo.breed }</Breed>
+          <Description>{ doggo.description }</Description>
+        </ContentView>
       </FullView>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  products: productsSelector(state)
+  doggos: doggosSelector(state)
 })
 
 export default connect(mapStateToProps)(DetailView)

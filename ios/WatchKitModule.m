@@ -13,7 +13,10 @@
 RCT_EXPORT_MODULE();
 
 - (NSArray<NSString *> *)supportedEvents {
-  return @[ @"ItemSelected" ];
+  return @[
+    @"ItemSelected",
+    @"GetInitialData"
+  ];
 }
 
 RCT_EXPORT_METHOD(activateWatchKitSession) {
@@ -47,8 +50,22 @@ RCT_EXPORT_METHOD(loadData:(NSArray<NSDictionary<NSString  *, id> *> *)data) {
 }
 
 - (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *,id> *)message replyHandler:(void (^)(NSDictionary<NSString *, id> * _Nonnull))replyHandler {
-  [self sendEventWithName: @"ItemSelected"
-                     body: message];
+  NSString *eventName = message[@"eventName"];
+  NSDictionary<NSString *, id> *body = message[@"payload"];
+  [self sendEventWithName: eventName body: body];
 }
+
+- (void)session:(nonnull WCSession *)session activationDidCompleteWithState:(WCSessionActivationState)activationState error:(nullable NSError *)error {
+}
+
+
+- (void)sessionDidBecomeInactive:(nonnull WCSession *)session {
+}
+
+
+- (void)sessionDidDeactivate:(nonnull WCSession *)session {
+
+}
+
 
 @end

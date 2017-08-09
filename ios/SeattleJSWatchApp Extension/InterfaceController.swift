@@ -9,6 +9,7 @@
 import WatchKit
 import WatchConnectivity
 import Foundation
+import HealthKit
 
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
@@ -36,10 +37,19 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
   func session(_ session: WCSession,
                activationDidCompleteWith activationState: WCSessionActivationState,
                error: Error?) {
-  }
-  
-  @IBAction func buttonWasSelected() {
-    
+    switch activationState {
+    case .activated:
+      WCSession.default().sendMessage(
+        [ "eventName" : "GetInitialData" ],
+        replyHandler: { payload in
+          debugPrint(payload)
+        },
+        errorHandler: nil
+      )
+      
+    default:
+      break
+    }
   }
   
   func session(_ session: WCSession,
@@ -52,17 +62,17 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
   }
   
   private func configureTable(with data: [[String: Any]]) {
-    table.setNumberOfRows(data.count, withRowType: "productRowType")
+    table.setNumberOfRows(data.count, withRowType: "doggoRowType")
     
     (0..<table.numberOfRows).forEach { index in
       guard
         let name = data[index]["name"] as? String,
-        let price = data[index]["price"] as? String
+        let breed = data[index]["breed"] as? String
         else { return }
       
-      let row = table.rowController(at: index) as? ProductRowType
+      let row = table.rowController(at: index) as? DoggoRowType
       row?.nameLabel.setText(name)
-      row?.priceLabel.setText("$\(price)")
+      row?.breedLabel.setText(breed)
     }
   }
   
@@ -70,7 +80,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     guard
       let selectedId = data[rowIndex]["id"] as? String,
       let name = data[rowIndex]["name"] as? String,
-      let price = data[rowIndex]["price"] as? String
+      let breed = data[rowIndex]["breed"] as? String
       else { return }
     
     let okAction = WKAlertAction(
@@ -78,7 +88,10 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
       style: .default,
       handler: {
         WCSession.default().sendMessage(
-          [ "id" : selectedId ],
+          [
+            "eventName" : "ItemSelected",
+            "payload": [ "id" : selectedId ]
+          ],
           replyHandler: { _ in },
           errorHandler: { debugPrint($0, separator: "", terminator: "/n") }
         )
@@ -93,7 +106,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     presentAlert(
       withTitle: name,
-      message: "$\(price)",
+      message: breed,
       preferredStyle: .actionSheet,
       actions: [ okAction, cancelAction ]
     )

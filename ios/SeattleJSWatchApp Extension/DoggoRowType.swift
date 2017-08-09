@@ -1,5 +1,5 @@
 //
-//  ProductRowType.swift
+//  DoggoRowType.swift
 //  SeattleJSApp
 //
 //  Created by Carlos Paelinck on 7/31/17.
@@ -8,7 +8,7 @@
 
 import WatchKit
 
-class ProductRowType: NSObject {
+class DoggoRowType: NSObject {
   @IBOutlet var nameLabel: WKInterfaceLabel!
-  @IBOutlet var priceLabel: WKInterfaceLabel!
+  @IBOutlet var breedLabel: WKInterfaceLabel!
 }

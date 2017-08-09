@@ -22,7 +22,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		292756AE1F2FE6E300714CB8 /* ProductRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292756AD1F2FE6E300714CB8 /* ProductRowType.swift */; };
+		292756AE1F2FE6E300714CB8 /* DoggoRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292756AD1F2FE6E300714CB8 /* DoggoRowType.swift */; };
 		2931A9971F2D3004009B6401 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2931A9951F2D3004009B6401 /* Interface.storyboard */; };
 		2931A9991F2D3004009B6401 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2931A9981F2D3004009B6401 /* Assets.xcassets */; };
 		2931A9A01F2D3004009B6401 /* SeattleJSWatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2931A99F1F2D3004009B6401 /* SeattleJSWatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -307,7 +307,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SeattleJSApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SeattleJSApp/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		292756AD1F2FE6E300714CB8 /* ProductRowType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductRowType.swift; sourceTree = "<group>"; };
+		292756AD1F2FE6E300714CB8 /* DoggoRowType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoggoRowType.swift; sourceTree = "<group>"; };
 		2931A9931F2D3004009B6401 /* SeattleJSWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeattleJSWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2931A9961F2D3004009B6401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		2931A9981F2D3004009B6401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -479,7 +479,7 @@
 		2927568F1F2FE6C100714CB8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				292756AD1F2FE6E300714CB8 /* ProductRowType.swift */,
+				292756AD1F2FE6E300714CB8 /* DoggoRowType.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -515,6 +515,13 @@
 				2931A9E01F2D3BD8009B6401 /* WatchKitModule.m */,
 			);
 			name = "Native Modules";
+			sourceTree = "<group>";
+		};
+		29A25EDF1F335AD70025032D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -571,6 +578,7 @@
 				2931A9941F2D3004009B6401 /* SeattleJSWatchApp */,
 				2931A9A31F2D3004009B6401 /* SeattleJSWatchApp Extension */,
 				83CBBA001A601CBA00E9B192 /* Products */,
+				29A25EDF1F335AD70025032D /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -683,6 +691,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.HealthKit = {
+								enabled = 0;
+							};
 						};
 					};
 					2931A9921F2D3004009B6401 = {
@@ -702,6 +713,9 @@
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
+							};
+							com.apple.HealthKit.watchos = {
+								enabled = 0;
 							};
 						};
 					};
@@ -1058,7 +1072,7 @@
 			files = (
 				2931A9A71F2D3004009B6401 /* ExtensionDelegate.swift in Sources */,
 				2931A9A51F2D3004009B6401 /* InterfaceController.swift in Sources */,
-				292756AE1F2FE6E300714CB8 /* ProductRowType.swift in Sources */,
+				292756AE1F2FE6E300714CB8 /* DoggoRowType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

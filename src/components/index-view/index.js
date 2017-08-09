@@ -1,10 +1,12 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import {
-  getProductData as getProductDataAction,
-  productsSelector
+  getDoggos as getDoggosAction,
+  loadMoreDogs as loadMoreDogsAction,
+  doggosSelector
 } from "../../modules"
 import {
+  Button,
   ListView,
   NativeModules,
   NativeEventEmitter
@@ -16,9 +18,15 @@ const { WatchKitModule } = NativeModules
 const watchKitModuleEmitter = new NativeEventEmitter(WatchKitModule)
 
 class IndexView extends Component {
-  static navigationOptions = {
-    title: "Products"
-  }
+  static navigationOptions = ({ navigation }) => ({
+    title: "Doggos",
+    headerRight: (
+      <Button
+        title="More Dogs"
+        onPress={() => navigation.state.params.loadMoreDogs()}
+      />
+    )
+  })
 
   state = {
     dataSource: new ListView.DataSource({
@@ -27,29 +35,37 @@ class IndexView extends Component {
   }
 
   componentWillMount() {
+    this.props.navigation.setParams({ loadMoreDogs: this.foo })
     WatchKitModule.activateWatchKitSession()
   }
 
   componentDidMount() {
     const {
       navigation: { navigate },
-      getProductData
+      getDoggos
     } = this.props
-    getProductData()
-    this.subscription = watchKitModuleEmitter
+    getDoggos()
+    this.doggoSelectedSubscription = watchKitModuleEmitter
       .addListener("ItemSelected", ({ id }) => navigate("Detail", { id }))
+    this.dataSubscription = watchKitModuleEmitter
+      .addListener("GetInitialData", () => WatchKitModule.loadData(this.props.doggos))
   }
 
   componentWillReceiveProps(nextProps) {
-    const { products } = nextProps
-    WatchKitModule.loadData(products)
+    const { doggos } = nextProps
+    WatchKitModule.loadData(doggos)
     this.setState(prevState => ({
-      dataSource: prevState.dataSource.cloneWithRows(products)
+      dataSource: prevState.dataSource.cloneWithRows(doggos)
     }))
   }
 
   componentWillUnmount() {
-    this.subscription.remove()
+    this.doggoSelectedSubscription.remove()
+    this.dataSubscription.remove()
+  }
+
+  foo = () => {
+    this.props.loadMoreDogs()
   }
 
   render() {
@@ -69,11 +85,12 @@ class IndexView extends Component {
 }
 
 const mapStateToProps = state => ({
-  products: productsSelector(state)
+  doggos: doggosSelector(state)
 })
 
 const mapDispatchToProps = {
-  getProductData: getProductDataAction
+  getDoggos: getDoggosAction,
+  loadMoreDogs: loadMoreDogsAction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(IndexView)
